@@ -25,8 +25,8 @@ public class MainActivity2 extends AppCompatActivity {
     ListView listView;
 
     //dit zijn de namen voor de listview
-    String namen[] = {"netflix" , "facebook" , "github","+"};
-    int images[] = {R.drawable.rec_1,R.drawable.rec_1,R.drawable.rec_1, R.drawable.rec_1};
+    String namen[] = {"netflix" , "facebook" , "github"};
+    int images[] = {R.drawable.rec_1,R.drawable.rec_1,R.drawable.rec_1};
 
     MainActivity2List mainActivity2List;
 

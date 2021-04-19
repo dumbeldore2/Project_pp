@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity2">
+    tools:context=".MainActivity4">
 
 
     <TextView
@@ -13,8 +13,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:text="list"
-        android:textSize="72dp"
+        android:text="add website"
+        android:textSize="64dp"
         android:textColor="@color/colorPrimary"
 
         app:layout_constraintStart_toStartOf="parent"
@@ -24,18 +24,43 @@
         android:layout_marginTop="50dp"/>
 
 
-    <ListView
-        android:id="@+id/list_view_1"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/text2"
+
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
+        android:text="naam?"
+        android:textSize="48dp"
+        android:textColor="@color/grey"
+        android:background="@drawable/background_titels"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/text1"
-        android:layout_marginTop="50dp"/>
+
+        android:layout_marginTop="50dp"
+        android:gravity="center"/>
+
+    <EditText
+        android:id="@+id/editText1"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:hint="name here"
+        android:textSize="36dp"
+        android:textColor="@color/black"
+        android:gravity="center"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text2"
+        android:layout_marginTop="25dp"/>
 
 
     <TextView
-        android:id="@+id/text4"
+        android:id="@+id/text3"
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -50,4 +75,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="50dp"
         android:gravity="center"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

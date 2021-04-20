@@ -48,15 +48,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:hint="name here"
-        android:textSize="36dp"
-        android:textColor="@color/black"
+        android:layout_marginTop="25dp"
         android:gravity="center"
+        android:hint="name here"
 
-        app:layout_constraintStart_toStartOf="parent"
+        android:inputType="text"
+        android:textColor="@color/black"
+        android:textSize="36dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text2"
-        android:layout_marginTop="25dp"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text2" />
 
 
     <TextView

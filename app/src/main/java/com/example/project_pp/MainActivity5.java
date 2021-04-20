@@ -43,7 +43,6 @@ public class MainActivity5 extends AppCompatActivity {
         //functions
         clickOnAdd();
         clickOnHome();
-
     }
 
 
@@ -81,5 +80,4 @@ public class MainActivity5 extends AppCompatActivity {
             }
         });
     }
-
 }

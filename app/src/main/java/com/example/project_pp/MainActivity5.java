@@ -3,19 +3,21 @@ package com.example.project_pp;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.LinearGradient;
 import android.graphics.Shader;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextPaint;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 
 public class MainActivity5 extends AppCompatActivity {
 
     //tittel opvragen om kleur te geven
-    TextView textView1;
+    TextView textView1,textView4;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -33,9 +35,13 @@ public class MainActivity5 extends AppCompatActivity {
 
         //texvieuw aan een object vast hangen
         textView1 = findViewById(R.id.text1);
+        textView4 = findViewById(R.id.text4);
 
         //textvieuw kleuren
         setColorToGradiant(textView1);
+
+        //functions
+        clickOnAdd();
 
     }
 
@@ -51,6 +57,17 @@ public class MainActivity5 extends AppCompatActivity {
                         Color.parseColor("#001510")
                 },null,Shader.TileMode.CLAMP);
         textView.getPaint().setShader(shader);
+    }
+
+    //functie clickOnAdd
+    public void clickOnAdd(){
+        textView4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),MainActivity3.class);
+                startActivity(intent);
+            }
+        });
     }
 
 }

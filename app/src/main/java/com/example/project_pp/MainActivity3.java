@@ -3,12 +3,14 @@ package com.example.project_pp;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.LinearGradient;
 import android.graphics.Shader;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextPaint;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -16,7 +18,7 @@ import android.widget.TextView;
 public class MainActivity3 extends AppCompatActivity {
 
     //tittel opvragen om kleur te geven
-    TextView textView1;
+    TextView textView1,textView4;
 
     //de listvieuw
     ListView listView1, listView2;
@@ -45,6 +47,7 @@ public class MainActivity3 extends AppCompatActivity {
 
         //texvieuw aan een object vast hangen
         textView1 = findViewById(R.id.text1);
+        textView4 = findViewById(R.id.text4);
 
         //textvieuw kleuren
         setColorToGradiant(textView1);
@@ -58,6 +61,9 @@ public class MainActivity3 extends AppCompatActivity {
         mainActivity3List1 = new MainActivity3List1(this,passwords);
         listView1.setAdapter(mainActivity3List);
         listView2.setAdapter(mainActivity3List1);
+
+        //functies
+        clickOnAdd();
     }
 
 
@@ -72,5 +78,16 @@ public class MainActivity3 extends AppCompatActivity {
                         Color.parseColor("#001510")
                 },null,Shader.TileMode.CLAMP);
         textView.getPaint().setShader(shader);
+    }
+
+    //de functie click on add
+    public void clickOnAdd(){
+        textView4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),MainActivity2.class);
+                startActivity(intent);
+            }
+        });
     }
 }

@@ -64,6 +64,7 @@ public class MainActivity3 extends AppCompatActivity {
 
         //functies
         clickOnAdd();
+        clickOnHome();
     }
 
 
@@ -86,6 +87,17 @@ public class MainActivity3 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),MainActivity5.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    //de functie click on home
+    public void clickOnHome(){
+        textView1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),MainActivity2.class);
                 startActivity(intent);
             }
         });

@@ -43,6 +43,7 @@ public class MainActivity4 extends AppCompatActivity {
 
         //functies
         clickOnAdd();
+        clickOnHome();
     }
 
     //de functie van de verf lol
@@ -61,6 +62,17 @@ public class MainActivity4 extends AppCompatActivity {
     //de functie clickOnAdd
     public void clickOnAdd(){
         textView3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),MainActivity2.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    //de functie click on home
+    public void clickOnHome(){
+        textView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),MainActivity2.class);

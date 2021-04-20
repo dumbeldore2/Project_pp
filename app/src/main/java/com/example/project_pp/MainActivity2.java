@@ -19,7 +19,7 @@ import android.widget.TextView;
 public class MainActivity2 extends AppCompatActivity {
 
     //tittel opvragen om kleur te geven
-    TextView textView1;
+    TextView textView1,textView2;
 
     //de listvieuw
     ListView listView;
@@ -46,6 +46,7 @@ public class MainActivity2 extends AppCompatActivity {
 
         //texvieuw aan een object vast hangen
         textView1 = findViewById(R.id.text1);
+        textView2 = findViewById(R.id.text2);
 
         //listview aan een object vast hangen
         listView = findViewById(R.id.list_view_1);
@@ -59,6 +60,7 @@ public class MainActivity2 extends AppCompatActivity {
 
         //functies
         clickOnListview();
+        clickOnAdd();
     }
 
     //de functie van de verf lol
@@ -81,6 +83,16 @@ public class MainActivity2 extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 System.out.println("item " + i+ "is gecliked");
                 Intent intent = new Intent(getApplicationContext(),MainActivity3.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    public void clickOnAdd(){
+        textView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),MainActivity4.class);
                 startActivity(intent);
             }
         });

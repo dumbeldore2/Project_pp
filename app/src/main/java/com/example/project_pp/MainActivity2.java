@@ -24,9 +24,12 @@ public class MainActivity2 extends AppCompatActivity {
     //de listvieuw
     ListView listView;
 
+    //de database
+    Database database;
+
     //dit zijn de namen voor de listview
-    String namen[] = {"netflix" , "facebook" , "github"};
-    int images[] = {R.drawable.rec_1,R.drawable.rec_1,R.drawable.rec_1};
+    String namen[] = {};
+    int images[] = {};
 
     MainActivity2List mainActivity2List;
 
@@ -51,8 +54,13 @@ public class MainActivity2 extends AppCompatActivity {
         //listview aan een object vast hangen
         listView = findViewById(R.id.list_view_1);
 
+        //de database linken
+        database = new Database(this);
+
         //textvieuw kleuren
         setColorToGradiant(textView1);
+
+        comboMaker();
 
         //de adapter aan het listview hangen
         mainActivity2List = new MainActivity2List(this,namen,images);
@@ -88,6 +96,7 @@ public class MainActivity2 extends AppCompatActivity {
         });
     }
 
+    //fun click on add
     public void clickOnAdd(){
         textView2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,5 +105,19 @@ public class MainActivity2 extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    //fun make combo voor listview
+    public void comboMaker(){
+        String[] uit = database.namen().clone();
+        int[] uit2 = new int[uit.length];
+
+        for (int i = 0; i < uit.length ; i++){
+            uit2[i] = R.drawable.rec_1;
+        }
+
+        namen = uit;
+        images = uit2;
+
     }
 }

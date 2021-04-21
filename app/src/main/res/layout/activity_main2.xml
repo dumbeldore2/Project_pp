@@ -23,15 +23,25 @@
 
         android:layout_marginTop="50dp"/>
 
+    <LinearLayout
+        android:id="@+id/linear1"
 
-    <ListView
-        android:id="@+id/list_view_1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="500dp"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/text1"
-        android:layout_marginTop="50dp"/>
+
+        android:orientation="vertical"
+        android:layout_margin="25dp">
+
+        <ListView
+            android:id="@+id/list_view_1"
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight="1"/>
+    </LinearLayout>
 
 
     <TextView

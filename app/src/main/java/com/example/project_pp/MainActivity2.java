@@ -60,6 +60,7 @@ public class MainActivity2 extends AppCompatActivity {
         //textvieuw kleuren
         setColorToGradiant(textView1);
 
+        //om de arraylijsten aan te passen voor de listvieuw
         comboMaker();
 
         //de adapter aan het listview hangen

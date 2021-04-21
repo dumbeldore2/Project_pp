@@ -84,7 +84,6 @@ public class MainActivity3 extends AppCompatActivity {
         setText1();
         clickOnAdd();
         clickOnHome();
-        System.out.println(id);
     }
 
 
@@ -107,6 +106,7 @@ public class MainActivity3 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),MainActivity5.class);
+                intent.putExtra("webId",id);
                 startActivity(intent);
             }
         });

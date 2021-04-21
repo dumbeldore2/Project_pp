@@ -114,4 +114,34 @@ public class Database extends SQLiteOpenHelper {
         }
         return uit;
     }
+
+
+
+
+    ///tabel 2
+
+    public int IDMAKERTABLE2() {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(
+                "select * from " + DATABASE_table_2, null
+        );
+        return cursor.getCount();
+    }
+
+    public void addToTabel2(String email, String code, int id) {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        if (!email.trim().isEmpty() && email != null) {
+            if (!code.trim().isEmpty() && code != null){
+                contentValues.put(Table_2_col_1, IDMAKERTABLE2());
+                contentValues.put(Table_2_col_2, id);
+                contentValues.put(Table_2_col_3, email);
+                contentValues.put(Table_2_col_4, code);
+            }
+        }
+
+        sqLiteDatabase.insert(DATABASE_table_2, null, contentValues);
+    }
+
 }

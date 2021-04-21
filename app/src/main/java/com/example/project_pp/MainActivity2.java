@@ -96,6 +96,13 @@ public class MainActivity2 extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                System.out.println("lol" + i + " is longclicked");
+                return true;
+            }
+        });
     }
 
     //fun click on add

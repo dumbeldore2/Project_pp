@@ -144,12 +144,12 @@ public class Database extends SQLiteOpenHelper {
     }
 
 
-    public String[] emails() {
+    public String[] emails(int id) {
 
         String uit[];
 
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
-        Cursor cursor = sqLiteDatabase.rawQuery("select " + Table_2_col_3 + " from " + DATABASE_table_2 + "", null);
+        Cursor cursor = sqLiteDatabase.rawQuery("select " + Table_2_col_3 + " from " + DATABASE_table_2 + " where " + Table_2_col_2 + " == " + id + "", null);
 
         uit = new String[cursor.getCount()];
 
@@ -160,7 +160,25 @@ public class Database extends SQLiteOpenHelper {
                 uit[i] = stringBuffer.toString();
             }
         }
+        return uit;
+    }
 
+    public String[] codes(int id) {
+
+        String uit[];
+
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery("select " + Table_2_col_4 + " from " + DATABASE_table_2 + " where " + Table_2_col_2 + " == " + id + "", null);
+
+        uit = new String[cursor.getCount()];
+
+        for (int i = 0; i <= cursor.getCount(); i++) {
+            if (cursor.moveToPosition(i)) {
+                StringBuffer stringBuffer = new StringBuffer();
+                stringBuffer.append(cursor.getString(0));
+                uit[i] = stringBuffer.toString();
+            }
+        }
         return uit;
     }
 

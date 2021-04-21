@@ -131,8 +131,10 @@ public class MainActivity3 extends AppCompatActivity {
 
     //fun make combo voor listview
     public void comboMaker(){
-        String[] uit = database.emails().clone();
+        String[] uit = database.emails(id).clone();
+        String[] uit2 = database.codes(id).clone();
         emails = uit;
+        passwords = uit2;
 
     }
 }

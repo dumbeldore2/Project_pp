@@ -3,23 +3,26 @@ package com.example.project_pp;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.LinearGradient;
 import android.graphics.Shader;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextPaint;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 public class MainActivity2 extends AppCompatActivity {
 
     //tittel opvragen om kleur te geven
-    TextView textView1,textView2;
+    TextView textView1,textView2,textView1Popup,textView2Popup;
 
     //de listvieuw
     ListView listView;
@@ -32,7 +35,14 @@ public class MainActivity2 extends AppCompatActivity {
     int images[] = {};
     int ids[] = {};
 
+    //de listview adapter
     MainActivity2List mainActivity2List;
+
+    //Dialog
+    Dialog dialog;
+
+    //imageview
+    ImageView imageViewClosePopup;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -68,6 +78,9 @@ public class MainActivity2 extends AppCompatActivity {
         mainActivity2List = new MainActivity2List(this,namen,images);
         listView.setAdapter(mainActivity2List);
 
+        //dialogt koppelen
+        dialog = new Dialog(this);
+
         //functies
         clickOnListview();
         clickOnAdd();
@@ -99,8 +112,39 @@ public class MainActivity2 extends AppCompatActivity {
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                System.out.println("lol" + i + " is longclicked");
-                return true;
+                dialog.setContentView(R.layout.delete_website);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                imageViewClosePopup = dialog.findViewById(R.id.imageViewPopup);
+                textView1Popup = dialog.findViewById(R.id.textView_edit);
+                textView2Popup = dialog.findViewById(R.id.textView_verwijderen);
+
+                //button om de popup te closen
+                imageViewClosePopup.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+                    }
+                });
+
+                //button voor een edit
+                textView1Popup.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(getApplicationContext(),MainActivity2.class);
+                        startActivity(intent);
+                    }
+                });
+
+                textView2Popup.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(getApplicationContext(),MainActivity2.class);
+                        startActivity(intent);
+                    }
+                });
+                dialog.show();
+            return true;
             }
         });
     }

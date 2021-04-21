@@ -17,6 +17,15 @@ import android.widget.TextView;
 
 public class MainActivity3 extends AppCompatActivity {
 
+    //de database
+    Database database;
+
+    //id van de website
+    int id;
+
+    //intent om de putextra op te vangen
+    Intent intent;
+
     //tittel opvragen om kleur te geven
     TextView textView1,textView4;
 
@@ -45,6 +54,15 @@ public class MainActivity3 extends AppCompatActivity {
         getWindow().setNavigationBarColor(Color.parseColor("#ffffff"));
         getWindow().setStatusBarColor(Color.parseColor("#ffffff"));
 
+        //de database connectere
+        database = new Database(this);
+
+        //intent koppelen aan een object
+        intent = getIntent();
+
+        //id is nu de id die mee is gegeven met de intent
+        id = intent.getIntExtra("webId",-1);
+
         //texvieuw aan een object vast hangen
         textView1 = findViewById(R.id.text1);
         textView4 = findViewById(R.id.text4);
@@ -63,8 +81,10 @@ public class MainActivity3 extends AppCompatActivity {
         listView2.setAdapter(mainActivity3List1);
 
         //functies
+        setText1();
         clickOnAdd();
         clickOnHome();
+        System.out.println(id);
     }
 
 
@@ -101,5 +121,10 @@ public class MainActivity3 extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    //de functie set text one
+    public void setText1(){
+        textView1.setText(database.getTable_1_col_2(id));
     }
 }

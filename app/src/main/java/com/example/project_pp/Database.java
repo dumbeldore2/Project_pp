@@ -82,4 +82,36 @@ public class Database extends SQLiteOpenHelper {
 
         return uit;
     }
+
+    public int[] idsTableOne() {
+
+        int uit[];
+
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery("select " + Table_1_col_1 + " from " + DATABASE_table_1 + "", null);
+
+        uit = new int[cursor.getCount()];
+
+        for (int i = 0; i <= cursor.getCount(); i++) {
+            if (cursor.moveToPosition(i)) {
+                StringBuffer stringBuffer = new StringBuffer();
+                stringBuffer.append(cursor.getString(0));
+                uit[i] = Integer.parseInt(stringBuffer.toString());
+            }
+        }
+
+        return uit;
+    }
+
+    public String getTable_1_col_2(int id){
+        String uit = "";
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery("select " +Table_1_col_2+ " from " + DATABASE_table_1 + " where " +Table_1_col_1+ " == " + id + "" ,null);
+        if (cursor.moveToFirst()){
+            StringBuffer stringBuffer = new StringBuffer();
+            stringBuffer.append(cursor.getString(0));
+            uit = stringBuffer.toString();
+        }
+        return uit;
+    }
 }

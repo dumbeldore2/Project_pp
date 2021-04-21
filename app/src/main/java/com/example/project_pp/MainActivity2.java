@@ -30,6 +30,7 @@ public class MainActivity2 extends AppCompatActivity {
     //dit zijn de namen voor de listview
     String namen[] = {};
     int images[] = {};
+    int ids[] = {};
 
     MainActivity2List mainActivity2List;
 
@@ -90,8 +91,8 @@ public class MainActivity2 extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                System.out.println("item " + i+ "is gecliked");
                 Intent intent = new Intent(getApplicationContext(),MainActivity3.class);
+                intent.putExtra("webId", ids[i]);
                 startActivity(intent);
             }
         });
@@ -119,6 +120,7 @@ public class MainActivity2 extends AppCompatActivity {
 
         namen = uit;
         images = uit2;
+        ids = database.idsTableOne().clone();
 
     }
 }

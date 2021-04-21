@@ -74,6 +74,7 @@ public class MainActivity3 extends AppCompatActivity {
         listView1 = findViewById(R.id.list_view_1);
         listView2 = findViewById(R.id.list_view_2);
 
+        comboMaker();
         //de adapters een object geven
         mainActivity3List = new MainActivity3List(this,emails);
         mainActivity3List1 = new MainActivity3List1(this,passwords);
@@ -126,5 +127,12 @@ public class MainActivity3 extends AppCompatActivity {
     //de functie set text one
     public void setText1(){
         textView1.setText(database.getTable_1_col_2(id));
+    }
+
+    //fun make combo voor listview
+    public void comboMaker(){
+        String[] uit = database.emails().clone();
+        emails = uit;
+
     }
 }

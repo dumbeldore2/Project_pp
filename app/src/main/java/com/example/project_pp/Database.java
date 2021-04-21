@@ -140,8 +140,29 @@ public class Database extends SQLiteOpenHelper {
                 contentValues.put(Table_2_col_4, code);
             }
         }
-
         sqLiteDatabase.insert(DATABASE_table_2, null, contentValues);
     }
+
+
+    public String[] emails() {
+
+        String uit[];
+
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery("select " + Table_2_col_3 + " from " + DATABASE_table_2 + "", null);
+
+        uit = new String[cursor.getCount()];
+
+        for (int i = 0; i <= cursor.getCount(); i++) {
+            if (cursor.moveToPosition(i)) {
+                StringBuffer stringBuffer = new StringBuffer();
+                stringBuffer.append(cursor.getString(0));
+                uit[i] = stringBuffer.toString();
+            }
+        }
+
+        return uit;
+    }
+
 
 }

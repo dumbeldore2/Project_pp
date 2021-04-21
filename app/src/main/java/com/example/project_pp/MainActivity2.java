@@ -15,6 +15,7 @@ import android.text.TextPaint;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -43,6 +44,9 @@ public class MainActivity2 extends AppCompatActivity {
 
     //imageview
     ImageView imageViewClosePopup;
+
+    //editText dialog
+    EditText editTextDialog;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -118,6 +122,8 @@ public class MainActivity2 extends AppCompatActivity {
                 imageViewClosePopup = dialog.findViewById(R.id.imageViewPopup);
                 textView1Popup = dialog.findViewById(R.id.textView_edit);
                 textView2Popup = dialog.findViewById(R.id.textView_verwijderen);
+                editTextDialog = dialog.findViewById(R.id.editTextDialog);
+                editTextDialog.setText(database.getTable_1_col_2(i));
 
                 //button om de popup te closen
                 imageViewClosePopup.setOnClickListener(new View.OnClickListener() {

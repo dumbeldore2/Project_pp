@@ -138,6 +138,14 @@ public class Database extends SQLiteOpenHelper {
         sqLiteDatabase.delete(DATABASE_table_1 , ""+ Table_1_col_1 + " == ?" , new String[]{id +""});
     }
 
+    public void rename(int id, String naam){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(Table_1_col_1,id);
+        contentValues.put(Table_1_col_2,naam);
+        sqLiteDatabase.update(DATABASE_table_1,contentValues,Table_1_col_1 + " == ?", new String[] {id +""});
+    }
+
 
 
 

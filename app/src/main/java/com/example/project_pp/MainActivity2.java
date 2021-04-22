@@ -138,6 +138,7 @@ public class MainActivity2 extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(getApplicationContext(),MainActivity2.class);
+                        database.rename(ids[i],editTextDialog.getText().toString());
                         startActivity(intent);
                     }
                 });

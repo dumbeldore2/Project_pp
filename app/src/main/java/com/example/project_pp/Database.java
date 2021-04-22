@@ -2,6 +2,7 @@ package com.example.project_pp;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -43,11 +44,26 @@ public class Database extends SQLiteOpenHelper {
     // Alle code omwile de eerste tabel
 
     public int IDMAKERTABLE1() {
+
+        int uit = -1;
+
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         Cursor cursor = sqLiteDatabase.rawQuery(
                 "select * from " + DATABASE_table_1, null
         );
-        return cursor.getCount();
+        if (cursor.getCount() == 0){
+            uit = 0;
+        } else {
+            Cursor cursor1 = sqLiteDatabase.rawQuery("select max(" + Table_1_col_1 + " ) from " + DATABASE_table_1 + "" ,null);
+            StringBuffer stringBuffer = new StringBuffer();
+            if (cursor1.moveToFirst()){
+                stringBuffer.append(cursor1.getString(0));
+                uit = Integer.parseInt(stringBuffer.toString()) +1;
+            }
+        }
+
+        System.out.println(uit);
+        return uit;
     }
 
 

@@ -9,6 +9,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import javax.xml.transform.sax.TemplatesHandler;
+
 public class Database extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "database_project_pp_mobile_app.db";
@@ -129,6 +131,11 @@ public class Database extends SQLiteOpenHelper {
             uit = stringBuffer.toString();
         }
         return uit;
+    }
+
+    public void deleteTable1Row(int id){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        sqLiteDatabase.delete(DATABASE_table_1 , ""+ Table_1_col_1 + " == ?" , new String[]{id +""});
     }
 
 

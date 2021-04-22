@@ -115,7 +115,7 @@ public class MainActivity2 extends AppCompatActivity {
         });
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, final int i, long l) {
                 dialog.setContentView(R.layout.delete_website);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
@@ -123,7 +123,7 @@ public class MainActivity2 extends AppCompatActivity {
                 textView1Popup = dialog.findViewById(R.id.textView_edit);
                 textView2Popup = dialog.findViewById(R.id.textView_verwijderen);
                 editTextDialog = dialog.findViewById(R.id.editTextDialog);
-                editTextDialog.setText(database.getTable_1_col_2(i));
+                editTextDialog.setText(database.getTable_1_col_2(ids[i]));
 
                 //button om de popup te closen
                 imageViewClosePopup.setOnClickListener(new View.OnClickListener() {
@@ -142,10 +142,12 @@ public class MainActivity2 extends AppCompatActivity {
                     }
                 });
 
+                //button voor de verwijdering
                 textView2Popup.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(getApplicationContext(),MainActivity2.class);
+                        database.deleteTable1Row(ids[i]);
                         startActivity(intent);
                     }
                 });

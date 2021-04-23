@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.LinearGradient;
 import android.graphics.Shader;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextPaint;
@@ -69,6 +70,9 @@ public class MainActivity3 extends AppCompatActivity {
 
         //de database connectere
         database = new Database(this);
+
+        //dialogt koppelen
+        dialog = new Dialog(this);
 
         //intent koppelen aan een object
         intent = getIntent();
@@ -160,6 +164,50 @@ public class MainActivity3 extends AppCompatActivity {
                 System.out.println("der is iere op geklickt" + i);
             }
         });
+
+        listView1.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, final int i, long l) {
+                dialog.setContentView(R.layout.dialoge1);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                imageView1dialog1 = dialog.findViewById(R.id.imageViewPopup);
+                textView1dialog1 = dialog.findViewById(R.id.textView_edit);
+                textView2dialog1 = dialog.findViewById(R.id.textView_verwijderen);
+                editTextdialog1 = dialog.findViewById(R.id.editTextDialog);
+                editTextdialog1.setText("lol dees is nog ni geweldig correct i guess");
+
+                //button om de popup te closen
+                imageView1dialog1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+                    }
+                });
+
+                //button voor een edit
+                /*textView1dialog1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(getApplicationContext(),MainActivity2.class);
+                        database.rename(ids[i],editTextdialog1.getText().toString());
+                        startActivity(intent);
+                    }
+                });*/
+
+                //button voor de verwijdering
+                /*textView2dialog1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(getApplicationContext(),MainActivity2.class);
+                        database.deleteTable1Row(ids[i]);
+                        startActivity(intent);
+                    }
+                });*/
+                dialog.show();
+                return true;
+            }
+        });
     }
 
     public void clickOnListview2(){
@@ -167,6 +215,50 @@ public class MainActivity3 extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 System.out.println("lol op de tweede ook " + i);
+            }
+        });
+
+        listView2.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, final int i, long l) {
+                dialog.setContentView(R.layout.dialoge1);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                imageView1dialog1 = dialog.findViewById(R.id.imageViewPopup);
+                textView1dialog1 = dialog.findViewById(R.id.textView_edit);
+                textView2dialog1 = dialog.findViewById(R.id.textView_verwijderen);
+                editTextdialog1 = dialog.findViewById(R.id.editTextDialog);
+                editTextdialog1.setText("lol dees is nog ni geweldig correct i guess");
+
+                //button om de popup te closen
+                imageView1dialog1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+                    }
+                });
+
+                //button voor een edit
+                /*textView1dialog1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(getApplicationContext(),MainActivity2.class);
+                        database.rename(ids[i],editTextdialog1.getText().toString());
+                        startActivity(intent);
+                    }
+                });*/
+
+                //button voor de verwijdering
+                /*textView2dialog1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(getApplicationContext(),MainActivity2.class);
+                        database.deleteTable1Row(ids[i]);
+                        startActivity(intent);
+                    }
+                });*/
+                dialog.show();
+                return true;
             }
         });
     }

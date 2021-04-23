@@ -152,11 +152,26 @@ public class Database extends SQLiteOpenHelper {
     ///tabel 2
 
     public int IDMAKERTABLE2() {
+
+        int uit = -1;
+
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         Cursor cursor = sqLiteDatabase.rawQuery(
                 "select * from " + DATABASE_table_2, null
         );
-        return cursor.getCount();
+        if (cursor.getCount() == 0){
+            uit = 0;
+        } else {
+            Cursor cursor1 = sqLiteDatabase.rawQuery("select max(" + Table_2_col_1 + " ) from " + DATABASE_table_2 + "" ,null);
+            StringBuffer stringBuffer = new StringBuffer();
+            if (cursor1.moveToFirst()){
+                stringBuffer.append(cursor1.getString(0));
+                uit = Integer.parseInt(stringBuffer.toString()) +1;
+            }
+        }
+
+        System.out.println(uit);
+        return uit;
     }
 
     public void addToTabel2(String email, String code, int id) {

@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.text.TextPaint;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -97,8 +98,8 @@ public class MainActivity3 extends AppCompatActivity {
         setText1();
         clickOnAdd();
         clickOnHome();
-        //clickOnListview1();
-        //clickOnListview2();
+        clickOnListview1();
+        clickOnListview2();
     }
 
 
@@ -149,5 +150,24 @@ public class MainActivity3 extends AppCompatActivity {
         String[] uit2 = database.codes(id).clone();
         emails = uit;
         passwords = uit2;
+    }
+
+    //click functie voor de eerste listview
+    public void clickOnListview1(){
+        listView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                System.out.println("der is iere op geklickt" + i);
+            }
+        });
+    }
+
+    public void clickOnListview2(){
+        listView2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                System.out.println("lol op de tweede ook " + i);
+            }
+        });
     }
 }

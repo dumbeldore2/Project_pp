@@ -186,6 +186,26 @@ public class Database extends SQLiteOpenHelper {
     }
 
 
+    public int[] idsTableTwo(int id) {
+
+        int uit[];
+
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery("select " + Table_2_col_1 + " from " + DATABASE_table_2 + " where " + Table_2_col_2 + " == " + id + "", null);
+
+        uit = new int[cursor.getCount()];
+
+        for (int i = 0; i <= cursor.getCount(); i++) {
+            if (cursor.moveToPosition(i)) {
+                StringBuffer stringBuffer = new StringBuffer();
+                stringBuffer.append(cursor.getString(0));
+                uit[i] = Integer.parseInt(stringBuffer.toString());
+            }
+        }
+
+        return uit;
+    }
+
     public String[] emails(int id) {
 
         String uit[];
@@ -224,5 +244,42 @@ public class Database extends SQLiteOpenHelper {
         return uit;
     }
 
+    public String getTable_2_col_3(int pid){
+        String uit = "";
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery("select " + Table_2_col_3 + " from " + DATABASE_table_2 + " where " + Table_2_col_1 + " == " + pid + "",null);
+        if (cursor.moveToFirst()){
+            StringBuffer stringBuffer = new StringBuffer();
+            stringBuffer.append(cursor.getString(0));
+            uit = stringBuffer.toString();
+        }
+        return uit;
+    }
 
+    public String getTable_2_col_4(int pid){
+        String uit = "";
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery("select " + Table_2_col_4 + " from " + DATABASE_table_2 + " where " + Table_2_col_1 + " == " + pid + "",null);
+        if (cursor.moveToFirst()){
+            StringBuffer stringBuffer = new StringBuffer();
+            stringBuffer.append(cursor.getString(0));
+            uit = stringBuffer.toString();
+        }
+        return uit;
+    }
+
+    public void deleteTable2Row(int pid){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        sqLiteDatabase.delete(DATABASE_table_2 , ""+ Table_2_col_1 + " == ?" , new String[]{pid +""});
+    }
+
+    public void rename2(int pid,int id, String email, String code){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(Table_2_col_1,pid);
+        contentValues.put(Table_2_col_2,id);
+        contentValues.put(Table_2_col_3,email);
+        contentValues.put(Table_2_col_4,code);
+        sqLiteDatabase.update(DATABASE_table_2,contentValues,Table_2_col_1 + " == ?", new String[] {pid +""});
+    }
 }

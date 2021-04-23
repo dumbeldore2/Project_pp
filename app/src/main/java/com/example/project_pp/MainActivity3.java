@@ -175,7 +175,7 @@ public class MainActivity3 extends AppCompatActivity {
                 textView1dialog1 = dialog.findViewById(R.id.textView_edit);
                 textView2dialog1 = dialog.findViewById(R.id.textView_verwijderen);
                 editTextdialog1 = dialog.findViewById(R.id.editTextDialog);
-                editTextdialog1.setText("lol dees is nog ni geweldig correct i guess");
+                editTextdialog1.setText(database.getTable_2_col_3(database.idsTableTwo(id)[i]));
 
                 //button om de popup te closen
                 imageView1dialog1.setOnClickListener(new View.OnClickListener() {
@@ -186,24 +186,24 @@ public class MainActivity3 extends AppCompatActivity {
                 });
 
                 //button voor een edit
-                /*textView1dialog1.setOnClickListener(new View.OnClickListener() {
+                textView1dialog1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(getApplicationContext(),MainActivity2.class);
-                        database.rename(ids[i],editTextdialog1.getText().toString());
+                        database.rename2(database.idsTableTwo(id)[i],id,editTextdialog1.getText().toString(),database.getTable_2_col_4(database.idsTableTwo(id)[i]));
                         startActivity(intent);
                     }
-                });*/
+                });
 
                 //button voor de verwijdering
-                /*textView2dialog1.setOnClickListener(new View.OnClickListener() {
+                textView2dialog1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(getApplicationContext(),MainActivity2.class);
-                        database.deleteTable1Row(ids[i]);
+                        database.deleteTable2Row(database.idsTableTwo(id)[i]);
                         startActivity(intent);
                     }
-                });*/
+                });
                 dialog.show();
                 return true;
             }
@@ -228,7 +228,7 @@ public class MainActivity3 extends AppCompatActivity {
                 textView1dialog1 = dialog.findViewById(R.id.textView_edit);
                 textView2dialog1 = dialog.findViewById(R.id.textView_verwijderen);
                 editTextdialog1 = dialog.findViewById(R.id.editTextDialog);
-                editTextdialog1.setText("lol dees is nog ni geweldig correct i guess");
+                editTextdialog1.setText(database.getTable_2_col_4(database.idsTableTwo(id)[i]));
 
                 //button om de popup te closen
                 imageView1dialog1.setOnClickListener(new View.OnClickListener() {
@@ -239,24 +239,24 @@ public class MainActivity3 extends AppCompatActivity {
                 });
 
                 //button voor een edit
-                /*textView1dialog1.setOnClickListener(new View.OnClickListener() {
+                textView1dialog1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(getApplicationContext(),MainActivity2.class);
-                        database.rename(ids[i],editTextdialog1.getText().toString());
+                        database.rename2(database.idsTableTwo(id)[i],id,database.getTable_2_col_3(database.idsTableTwo(id)[i]),editTextdialog1.getText().toString());
                         startActivity(intent);
                     }
-                });*/
+                });
 
                 //button voor de verwijdering
-                /*textView2dialog1.setOnClickListener(new View.OnClickListener() {
+                textView2dialog1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(getApplicationContext(),MainActivity2.class);
-                        database.deleteTable1Row(ids[i]);
+                        database.deleteTable2Row(database.idsTableTwo(id)[i]);
                         startActivity(intent);
                     }
-                });*/
+                });
                 dialog.show();
                 return true;
             }

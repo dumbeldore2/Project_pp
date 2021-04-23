@@ -23,7 +23,7 @@ import android.widget.TextView;
 public class MainActivity2 extends AppCompatActivity {
 
     //tittel opvragen om kleur te geven
-    TextView textView1,textView2,textView1Popup,textView2Popup;
+    TextView textView1,textView2,textView1dialog1 ,textView2dialog1 ;
 
     //de listvieuw
     ListView listView;
@@ -43,10 +43,10 @@ public class MainActivity2 extends AppCompatActivity {
     Dialog dialog;
 
     //imageview
-    ImageView imageViewClosePopup;
+    ImageView imageView1dialog1 ;
 
     //editText dialog
-    EditText editTextDialog;
+    EditText editTextdialog1;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -116,17 +116,17 @@ public class MainActivity2 extends AppCompatActivity {
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, final int i, long l) {
-                dialog.setContentView(R.layout.delete_website);
+                dialog.setContentView(R.layout.dialoge1);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
-                imageViewClosePopup = dialog.findViewById(R.id.imageViewPopup);
-                textView1Popup = dialog.findViewById(R.id.textView_edit);
-                textView2Popup = dialog.findViewById(R.id.textView_verwijderen);
-                editTextDialog = dialog.findViewById(R.id.editTextDialog);
-                editTextDialog.setText(database.getTable_1_col_2(ids[i]));
+                imageView1dialog1 = dialog.findViewById(R.id.imageViewPopup);
+                textView1dialog1 = dialog.findViewById(R.id.textView_edit);
+                textView2dialog1 = dialog.findViewById(R.id.textView_verwijderen);
+                editTextdialog1 = dialog.findViewById(R.id.editTextDialog);
+                editTextdialog1.setText(database.getTable_1_col_2(ids[i]));
 
                 //button om de popup te closen
-                imageViewClosePopup.setOnClickListener(new View.OnClickListener() {
+                imageView1dialog1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         dialog.dismiss();
@@ -134,17 +134,17 @@ public class MainActivity2 extends AppCompatActivity {
                 });
 
                 //button voor een edit
-                textView1Popup.setOnClickListener(new View.OnClickListener() {
+                textView1dialog1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(getApplicationContext(),MainActivity2.class);
-                        database.rename(ids[i],editTextDialog.getText().toString());
+                        database.rename(ids[i],editTextdialog1.getText().toString());
                         startActivity(intent);
                     }
                 });
 
                 //button voor de verwijdering
-                textView2Popup.setOnClickListener(new View.OnClickListener() {
+                textView2dialog1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(getApplicationContext(),MainActivity2.class);

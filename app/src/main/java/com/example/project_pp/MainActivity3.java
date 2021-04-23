@@ -3,6 +3,7 @@ package com.example.project_pp;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.LinearGradient;
@@ -12,6 +13,8 @@ import android.os.Bundle;
 import android.text.TextPaint;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -27,10 +30,19 @@ public class MainActivity3 extends AppCompatActivity {
     Intent intent;
 
     //tittel opvragen om kleur te geven
-    TextView textView1,textView4;
+    TextView textView1,textView4,textView1dialog1 ,textView2dialog1;
 
     //de listvieuw
     ListView listView1, listView2;
+
+    //Dialog
+    Dialog dialog;
+
+    //imageview
+    ImageView imageView1dialog1 ;
+
+    //editText dialog
+    EditText editTextdialog1;
 
     //dit zijn de namen voor de listview
     String emails[] = {"yago.engels@gmail.com"};
@@ -85,6 +97,8 @@ public class MainActivity3 extends AppCompatActivity {
         setText1();
         clickOnAdd();
         clickOnHome();
+        //clickOnListview1();
+        //clickOnListview2();
     }
 
 
@@ -135,6 +149,5 @@ public class MainActivity3 extends AppCompatActivity {
         String[] uit2 = database.codes(id).clone();
         emails = uit;
         passwords = uit2;
-
     }
 }

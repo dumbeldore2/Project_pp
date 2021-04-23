@@ -63,8 +63,6 @@ public class Database extends SQLiteOpenHelper {
                 uit = Integer.parseInt(stringBuffer.toString()) +1;
             }
         }
-
-        System.out.println(uit);
         return uit;
     }
 
@@ -169,8 +167,6 @@ public class Database extends SQLiteOpenHelper {
                 uit = Integer.parseInt(stringBuffer.toString()) +1;
             }
         }
-
-        System.out.println(uit);
         return uit;
     }
 

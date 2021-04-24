@@ -11,6 +11,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextPaint;
+import android.util.Pair;
 import android.view.WindowManager;
 import android.widget.TextView;
 
@@ -51,7 +52,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 Intent intent = new Intent(MainActivity.this,MainActivity2.class);
-                startActivity(intent);
+                startActivity(intent
+                );
                 finish();
             }
         },SPLASH_TIME_OUT);

@@ -135,6 +135,11 @@ public class Database extends SQLiteOpenHelper {
     public void deleteTable1Row(int id){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         sqLiteDatabase.delete(DATABASE_table_1 , ""+ Table_1_col_1 + " == ?" , new String[]{id +""});
+
+        int[] ids = idsTableTwo(id);
+        for(int i = 0 ; i < ids.length ; i ++){
+            deleteTable2Row(ids[i]);
+        }
     }
 
     public void rename(int id, String naam){

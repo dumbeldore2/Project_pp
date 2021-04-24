@@ -172,10 +172,18 @@ public class MainActivity2 extends AppCompatActivity {
     //fun click on add
     public void clickOnAdd(){
         textView2.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),MainActivity4.class);
-                startActivity(intent);
+
+               Pair[] pairs = new Pair[2];
+                pairs[0] = new Pair<View,String>(textView2,"1");
+                pairs[1] = new Pair<View,String>(textView2,"3");
+
+                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity2.this,
+                        pairs);
+                startActivity(intent,options.toBundle());
             }
         });
     }

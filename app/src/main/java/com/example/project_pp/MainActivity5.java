@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity5 extends AppCompatActivity {
 
@@ -94,9 +95,17 @@ public class MainActivity5 extends AppCompatActivity {
                 String[] data = getEditText().clone();
                 if (data[0]!= null && !data[0].trim().isEmpty()){
                     if (data[1]!= null && !data[1].trim().isEmpty()){
-                        database.addToTabel2(data[0],data[1],id);
-                        intent.putExtra("webId", id);
-                        startActivity(intent);
+                        if (database.uniqueEmail(data[0],id)){
+                            database.addToTabel2(data[0],data[1],id);
+                            intent.putExtra("webId", id);
+                            startActivity(intent);
+                        } else {
+                            if (!database.uniqueEmail(data[0],id)){
+                                Toast.makeText(getApplicationContext(),"dit emailadres bestaat al \n in deze website",Toast.LENGTH_LONG).show();
+                                intent.putExtra("webId", id);
+                                startActivity(intent);
+                            }
+                        }
                     }
                 }
             }

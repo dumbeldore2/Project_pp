@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -173,16 +174,15 @@ public class Database extends SQLiteOpenHelper {
     public void addToTabel2(String email, String code, int id) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-
         if (!email.trim().isEmpty() && email != null) {
             if (!code.trim().isEmpty() && code != null){
-                contentValues.put(Table_2_col_1, IDMAKERTABLE2());
-                contentValues.put(Table_2_col_2, id);
-                contentValues.put(Table_2_col_3, email);
-                contentValues.put(Table_2_col_4, code);
+                    contentValues.put(Table_2_col_1, IDMAKERTABLE2());
+                    contentValues.put(Table_2_col_2, id);
+                    contentValues.put(Table_2_col_3, email);
+                    contentValues.put(Table_2_col_4, code);
+                    sqLiteDatabase.insert(DATABASE_table_2, null, contentValues);
             }
         }
-        sqLiteDatabase.insert(DATABASE_table_2, null, contentValues);
     }
 
 
@@ -281,5 +281,17 @@ public class Database extends SQLiteOpenHelper {
         contentValues.put(Table_2_col_3,email);
         contentValues.put(Table_2_col_4,code);
         sqLiteDatabase.update(DATABASE_table_2,contentValues,Table_2_col_1 + " == ?", new String[] {pid +""});
+    }
+
+    public boolean uniqueEmail(String email , int id){
+        boolean uit = true;
+        String[] emails = emails(id).clone();
+        for (int i = 0; i < emails.length && uit ; i++){
+            if (email.equals(emails[i].toString())){
+                uit = false;
+            }
+        }
+        System.out.println(uit);
+        return uit;
     }
 }

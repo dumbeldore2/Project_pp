@@ -101,9 +101,7 @@ public class MainActivity5 extends AppCompatActivity {
                             startActivity(intent);
                         } else {
                             if (!database.uniqueEmail(data[0],id)){
-                                Toast.makeText(getApplicationContext(),"dit emailadres bestaat al \n in deze website",Toast.LENGTH_LONG).show();
-                                intent.putExtra("webId", id);
-                                startActivity(intent);
+                                Toast.makeText(getApplicationContext(),"dit emailadres bestaat al \n druk op de titel om terug te gaan ",Toast.LENGTH_LONG).show();
                             }
                         }
                     }

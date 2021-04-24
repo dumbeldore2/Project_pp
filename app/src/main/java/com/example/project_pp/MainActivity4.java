@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity4 extends AppCompatActivity {
 
@@ -78,9 +79,13 @@ public class MainActivity4 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (!getEditText1().isEmpty()){
-                    database.addToTabel1(getEditText1());
-                    Intent intent = new Intent(getApplicationContext(),MainActivity2.class);
-                    startActivity(intent);
+                    if (database.uniqueWebsite(getEditText1())){
+                        database.addToTabel1(getEditText1());
+                        Intent intent = new Intent(getApplicationContext(),MainActivity2.class);
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(getApplicationContext(),"deze website bestaal al \n druk op de titel om terug te gaan",Toast.LENGTH_LONG).show();
+                    }
                 }
             }
         });

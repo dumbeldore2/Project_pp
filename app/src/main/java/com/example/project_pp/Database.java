@@ -145,6 +145,20 @@ public class Database extends SQLiteOpenHelper {
         sqLiteDatabase.update(DATABASE_table_1,contentValues,Table_1_col_1 + " == ?", new String[] {id +""});
     }
 
+    public boolean uniqueWebsite(String website){
+        boolean uit = true;
+        String[] webs = namen().clone();
+        for (int i = 0; i < webs.length && uit ; i++){
+            if (website.equals(webs[i])){
+                System.out.println(website);
+                System.out.println(webs[i]);
+                uit = false;
+            }
+        }
+        System.out.println(uit);
+        return uit;
+    }
+
 
 
 
@@ -287,7 +301,7 @@ public class Database extends SQLiteOpenHelper {
         boolean uit = true;
         String[] emails = emails(id).clone();
         for (int i = 0; i < emails.length && uit ; i++){
-            if (email.equals(emails[i].toString())){
+            if (email.equals(emails[i])){
                 uit = false;
             }
         }

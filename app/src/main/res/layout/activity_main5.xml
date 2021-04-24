@@ -83,7 +83,7 @@
 
         android:layout_marginTop="25dp"
         android:gravity="center"
-        android:hint="email here"
+        android:hint="password here"
         android:inputType="text"
 
         android:textColor="@color/black"

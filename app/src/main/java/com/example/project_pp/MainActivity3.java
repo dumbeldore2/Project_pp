@@ -165,8 +165,6 @@ public class MainActivity3 extends AppCompatActivity {
         listView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                System.out.println("der is iere op geklickt" + i);
-
                 ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
                 ClipData clip = ClipData.newPlainText("password",database.getTable_2_col_4(database.idsTableTwo(id)[i]));
                 clipboard.setPrimaryClip(clip);
@@ -223,7 +221,10 @@ public class MainActivity3 extends AppCompatActivity {
         listView2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                System.out.println("lol op de tweede ook " + i);
+                ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clip = ClipData.newPlainText("password",database.getTable_2_col_4(database.idsTableTwo(id)[i]));
+                clipboard.setPrimaryClip(clip);
+                Toast.makeText(getApplicationContext(),database.getTable_2_col_4(database.idsTableTwo(id)[i]) + "\n is gecopieerd", Toast.LENGTH_LONG).show();
             }
         });
 

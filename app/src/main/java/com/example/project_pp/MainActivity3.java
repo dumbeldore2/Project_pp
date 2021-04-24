@@ -129,11 +129,21 @@ public class MainActivity3 extends AppCompatActivity {
     //de functie click on add
     public void clickOnAdd(){
         textView4.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),MainActivity5.class);
                 intent.putExtra("webId",id);
-                startActivity(intent);
+
+                Pair[] pairs = new Pair[3];
+                pairs[0] = new Pair<View,String>(textView4,"1");
+                pairs[1] = new Pair<View,String>(textView4,"3");
+                pairs[2] = new Pair<View,String>(textView4,"5");
+
+                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity3.this,
+                        pairs);
+
+                startActivity(intent,options.toBundle());
             }
         });
     }

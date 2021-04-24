@@ -91,6 +91,7 @@ public class MainActivity5 extends AppCompatActivity {
     //functie clickOnAdd
     public void clickOnAdd() {
         textView4.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity3.class);
@@ -100,7 +101,16 @@ public class MainActivity5 extends AppCompatActivity {
                         if (database.uniqueEmail(data[0],id)){
                             database.addToTabel2(data[0],data[1],id);
                             intent.putExtra("webId", id);
-                            startActivity(intent);
+
+                            Pair[] pairs = new Pair[3];
+                            pairs[0] = new Pair<View,String>(textView4,"1");
+                            pairs[1] = new Pair<View,String>(textView4,"2");
+                            pairs[2] = new Pair<View,String>(textView4,"3");
+
+                            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity5.this,
+                                    pairs);
+
+                            startActivity(intent,options.toBundle());
                         } else {
                             if (!database.uniqueEmail(data[0],id)){
                                 Toast.makeText(getApplicationContext(),"dit emailadres bestaat al \n druk op de titel om terug te gaan ",Toast.LENGTH_LONG).show();

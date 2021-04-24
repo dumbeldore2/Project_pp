@@ -4,6 +4,9 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.LinearGradient;
@@ -19,6 +22,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity3 extends AppCompatActivity {
 
@@ -162,6 +166,11 @@ public class MainActivity3 extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 System.out.println("der is iere op geklickt" + i);
+
+                ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clip = ClipData.newPlainText("password",database.getTable_2_col_4(database.idsTableTwo(id)[i]));
+                clipboard.setPrimaryClip(clip);
+                Toast.makeText(getApplicationContext(),database.getTable_2_col_4(database.idsTableTwo(id)[i]) + "\n is gecopieerd", Toast.LENGTH_LONG).show();
             }
         });
 

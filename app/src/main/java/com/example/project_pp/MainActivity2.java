@@ -3,6 +3,7 @@ package com.example.project_pp;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActivityOptions;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -12,6 +13,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextPaint;
+import android.util.Pair;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
@@ -106,13 +108,22 @@ public class MainActivity2 extends AppCompatActivity {
     //de functie om te klikken op een listview object
     public void clickOnListview(){
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(getApplicationContext(),MainActivity3.class);
                 intent.putExtra("webId", ids[i]);
-                startActivity(intent);
+
+                Pair[] pairs = new Pair[1];
+                pairs[0] = new Pair<View,String>(listView,"1");
+
+                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity2.this,
+                        pairs);
+
+                startActivity(intent,options.toBundle());
             }
         });
+
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, final int i, long l) {

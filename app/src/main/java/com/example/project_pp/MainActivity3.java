@@ -3,6 +3,7 @@ package com.example.project_pp;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActivityOptions;
 import android.app.Dialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
@@ -15,6 +16,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextPaint;
+import android.util.Pair;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
@@ -139,10 +141,20 @@ public class MainActivity3 extends AppCompatActivity {
     //de functie click on home
     public void clickOnHome(){
         textView1.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),MainActivity2.class);
-                startActivity(intent);
+
+                Pair[] pairs = new Pair[2];
+                pairs[0] = new Pair<View,String>(textView1,"2");
+                pairs[1] = new Pair<View,String>(textView1,"1");
+                pairs[1] = new Pair<View,String>(textView1,"3");
+
+                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity3.this,
+                        pairs);
+
+                startActivity(intent,options.toBundle());
             }
         });
     }

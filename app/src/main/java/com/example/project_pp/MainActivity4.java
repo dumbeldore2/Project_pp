@@ -102,9 +102,9 @@ public class MainActivity4 extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(),MainActivity2.class);
 
                 Pair[] pairs = new Pair[3];
-                pairs[0] = new Pair<View,String>(textView3,"1");
-                pairs[1] = new Pair<View,String>(textView3,"2");
-                pairs[2] = new Pair<View,String>(textView3,"3");
+                pairs[0] = new Pair<View,String>(textView1,"1");
+                pairs[1] = new Pair<View,String>(textView1,"2");
+                pairs[2] = new Pair<View,String>(textView1,"3");
 
                 ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity4.this,
                         pairs);

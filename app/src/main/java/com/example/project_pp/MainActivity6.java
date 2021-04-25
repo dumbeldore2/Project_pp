@@ -3,10 +3,12 @@ package com.example.project_pp;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Pair;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
@@ -48,6 +50,7 @@ public class MainActivity6 extends AppCompatActivity {
 
     public void click1(){
         textView3.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View view) {
                 ints[0]= 1;
@@ -57,6 +60,7 @@ public class MainActivity6 extends AppCompatActivity {
     }
     public void click2(){
         textView5.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View view) {
                 ints[1]= 1;
@@ -65,10 +69,18 @@ public class MainActivity6 extends AppCompatActivity {
         });
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void comboChecker(){
         if (ints[0] == 1 && ints[1] == 1){
             Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-            startActivity(intent);
+
+            Pair[] pairs = new Pair[2];
+            pairs[0] = new Pair<View,String>(textView3,"1");
+            pairs[1] = new Pair<View,String>(textView5,"2");
+
+            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity6.this,
+                    pairs);
+            startActivity(intent,options.toBundle());
         }
     }
 }

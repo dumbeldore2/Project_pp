@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private static int SPLASH_TIME_OUT = 4000;
 
     //de twee textviews vanuit de xml
-    TextView textView1,textView2;
+    TextView textView1,textView2,textView3;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -41,10 +41,12 @@ public class MainActivity extends AppCompatActivity {
         //de textviews benamen zodat ze nadien gekleurd kunnen worden
         textView1 = findViewById(R.id.text1);
         textView2 = findViewById(R.id.text2);
+        textView3 = findViewById(R.id.text3);
 
         //kleuren van de letters
         setColorToGradiant(textView1);
         setColorToGradiant(textView2);
+        setColorToGradiant(textView3);
 
         //de spash
 

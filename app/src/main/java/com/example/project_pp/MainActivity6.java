@@ -15,7 +15,9 @@ import android.widget.TextView;
 
 import org.bson.Document;
 
+import io.realm.Realm;
 import io.realm.mongodb.App;
+import io.realm.mongodb.AppConfiguration;
 import io.realm.mongodb.User;
 import io.realm.mongodb.mongo.MongoClient;
 import io.realm.mongodb.mongo.MongoCollection;
@@ -30,6 +32,7 @@ public class MainActivity6 extends AppCompatActivity {
     int [] ints;
 
     //mongodb constanten
+    String appId = "project-pp-yfznu";
     private App app;
     MongoClient mongoClient;
     MongoDatabase mongoDatabase;
@@ -61,6 +64,11 @@ public class MainActivity6 extends AppCompatActivity {
         //fun
         click1();
         click2();
+
+        //realm init
+        Realm.init(this);
+        app = new App(new AppConfiguration.Builder(appId).build());
+
     }
 
     public void click1(){

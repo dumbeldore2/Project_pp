@@ -13,6 +13,14 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 
+import org.bson.Document;
+
+import io.realm.mongodb.App;
+import io.realm.mongodb.User;
+import io.realm.mongodb.mongo.MongoClient;
+import io.realm.mongodb.mongo.MongoCollection;
+import io.realm.mongodb.mongo.MongoDatabase;
+
 public class MainActivity6 extends AppCompatActivity {
 
     //textview voor button
@@ -21,6 +29,13 @@ public class MainActivity6 extends AppCompatActivity {
     //ints
     int [] ints;
 
+    //mongodb constanten
+    private App app;
+    MongoClient mongoClient;
+    MongoDatabase mongoDatabase;
+    Long id;
+    User user;
+    MongoCollection<Document> mongoCollection;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override

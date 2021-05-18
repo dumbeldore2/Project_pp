@@ -6,3 +6,6 @@ De turorials voor een connectie met mongo db
 
   2)  Dit is een tutorial voor een connectie met de db via een email-adress
       https://www.youtube.com/watch?v=pcNnk-k7YGk
+    
+  3)  dit is een tutorial om data te kunnen afhalen van de db 
+      https://www.youtube.com/watch?v=pcNnk-k7YGk

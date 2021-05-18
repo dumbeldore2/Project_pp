@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Pair;
 import android.view.View;
 import android.view.WindowManager;
@@ -18,6 +19,7 @@ import org.bson.Document;
 import io.realm.Realm;
 import io.realm.mongodb.App;
 import io.realm.mongodb.AppConfiguration;
+import io.realm.mongodb.Credentials;
 import io.realm.mongodb.User;
 import io.realm.mongodb.mongo.MongoClient;
 import io.realm.mongodb.mongo.MongoCollection;
@@ -68,7 +70,20 @@ public class MainActivity6 extends AppCompatActivity {
         //realm init
         Realm.init(this);
         app = new App(new AppConfiguration.Builder(appId).build());
+        Credentials credentials = Credentials.emailPassword("yago.engels@gmail.com", "Judolessen12");
+        app.loginAsync(credentials, new App.Callback<User>() {
+            @Override
+            public void onResult(App.Result<User> result) {
+                if (result.isSuccess()) {
 
+                    Log.v("User", "tis gelukt lololl");
+                } else {
+
+                    Log.v("User", "tis ni echt gelukt");
+
+                }
+            }
+        });
     }
 
     public void click1(){

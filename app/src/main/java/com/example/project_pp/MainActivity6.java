@@ -98,6 +98,20 @@ public class MainActivity6 extends AppCompatActivity {
                         Log.e("EXAMPLE", "failed to count documents with: ", task.getError());
                     }
                 });
+
+                Document queryFilter = new Document().append("_id",0);
+
+                mongoCollection.findOne(queryFilter).getAsync(lol -> {
+                    if (lol.isSuccess()){
+                        Log.v("SEARCHING","the toaster has been found");
+                        Toast.makeText(getApplicationContext(),"big giant succes",Toast.LENGTH_LONG).show();
+                        Document resultData = lol.get();
+                        System.out.println(resultData.getString("account"));
+                    } else {
+                        Log.v("SEARCHING","the toaster has not been found" + result.getError().toString());
+                        Toast.makeText(getApplicationContext(),"big giant failure",Toast.LENGTH_LONG).show();
+                    }
+                });
             }
         });
     }

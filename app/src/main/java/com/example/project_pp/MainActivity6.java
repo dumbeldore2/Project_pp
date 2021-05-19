@@ -13,6 +13,7 @@ import android.util.Pair;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.bson.Document;
 
@@ -77,11 +78,26 @@ public class MainActivity6 extends AppCompatActivity {
                 if (result.isSuccess()) {
 
                     Log.v("User", "tis gelukt lololl");
+                    user = app.currentUser();
+                    mongoClient = user.getMongoClient("mongodb-atlas");
+                    mongoDatabase = mongoClient.getDatabase("pp");
+                    mongoCollection = mongoDatabase.getCollection("shemas");
+                    Toast.makeText(getApplicationContext(), "loggin succesful", Toast.LENGTH_LONG).show();
                 } else {
 
                     Log.v("User", "tis ni echt gelukt");
 
                 }
+
+                mongoCollection.count().getAsync(task -> {
+                    if (task.isSuccess()) {
+                        long count = task.get();
+                        id = count;
+                        Log.v("EXAMPLE", "successfully counted, number of documents in the collection: " + count);
+                    } else {
+                        Log.e("EXAMPLE", "failed to count documents with: ", task.getError());
+                    }
+                });
             }
         });
     }

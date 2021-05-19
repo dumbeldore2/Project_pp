@@ -8,4 +8,4 @@ De turorials voor een connectie met mongo db
       https://www.youtube.com/watch?v=pcNnk-k7YGk
     
   3)  dit is een tutorial om data te kunnen afhalen van de db 
-      https://www.youtube.com/watch?v=pcNnk-k7YGk
+      https://www.youtube.com/watch?v=bLJIWYi0hjI

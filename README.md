@@ -11,3 +11,5 @@ De turorials voor een connectie met mongo db
 
   3)  dit is een tutorial om data te kunnen afhalen van de db 
       https://www.youtube.com/watch?v=bLJIWYi0hjI
+      
+  4)  dit is tutorial om meerdere documenten te vinden , hier is ook een oplossing op minuut 1:16 https://www.youtube.com/watch?v=AlCHX9BJfdg&list=PLBqHLq3IFiRLzpPgWwP-eUfazUBOOBm-F&index=8 voor serviceerror2

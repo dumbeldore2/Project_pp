@@ -99,7 +99,8 @@ public class MainActivity6 extends AppCompatActivity {
                     }
                 });
 
-                Document queryFilter = new Document().append("_id",0);
+                //TODO EEN QUERY ZOeken zodat deze kan opgevraagd worden
+                /*Document queryFilter = new Document().append("_id","ObjectId(609ecae1b485875e70a3e076)");
 
                 mongoCollection.findOne(queryFilter).getAsync(lol -> {
                     if (lol.isSuccess()){
@@ -111,7 +112,17 @@ public class MainActivity6 extends AppCompatActivity {
                         Log.v("SEARCHING","the toaster has not been found" + result.getError().toString());
                         Toast.makeText(getApplicationContext(),"big giant failure",Toast.LENGTH_LONG).show();
                     }
-                });
+                });*/
+
+                /*mongoCollection.find().first().getAsync(lal ->{
+                    if (lal.isSuccess()){
+                        Document resultData = lal.get();
+                        System.out.println(resultData.getString("_id"));
+                    } else {
+                        System.out.println("das naar de clote he ");
+                    }
+                });*/
+
             }
         });
     }

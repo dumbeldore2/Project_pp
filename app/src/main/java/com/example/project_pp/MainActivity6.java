@@ -21,10 +21,12 @@ import io.realm.Realm;
 import io.realm.mongodb.App;
 import io.realm.mongodb.AppConfiguration;
 import io.realm.mongodb.Credentials;
+import io.realm.mongodb.RealmResultTask;
 import io.realm.mongodb.User;
 import io.realm.mongodb.mongo.MongoClient;
 import io.realm.mongodb.mongo.MongoCollection;
 import io.realm.mongodb.mongo.MongoDatabase;
+import io.realm.mongodb.mongo.iterable.MongoCursor;
 
 public class MainActivity6 extends AppCompatActivity {
 
@@ -39,7 +41,7 @@ public class MainActivity6 extends AppCompatActivity {
     private App app;
     MongoClient mongoClient;
     MongoDatabase mongoDatabase;
-    Long id;
+    int id;
     User user;
     MongoCollection<Document> mongoCollection;
 
@@ -76,7 +78,6 @@ public class MainActivity6 extends AppCompatActivity {
             @Override
             public void onResult(App.Result<User> result) {
                 if (result.isSuccess()) {
-
                     Log.v("User", "tis gelukt lololl");
                     user = app.currentUser();
                     mongoClient = user.getMongoClient("mongodb-atlas");
@@ -91,15 +92,14 @@ public class MainActivity6 extends AppCompatActivity {
 
                 mongoCollection.count().getAsync(task -> {
                     if (task.isSuccess()) {
-                        long count = task.get();
-                        id = count;
+                        Long count = task.get();
+                        id = count.intValue();
                         Log.v("EXAMPLE", "successfully counted, number of documents in the collection: " + count);
                     } else {
                         Log.e("EXAMPLE", "failed to count documents with: ", task.getError());
                     }
                 });
 
-                //TODO EEN QUERY ZOeken zodat deze kan opgevraagd worden
                 /*Document queryFilter = new Document().append("_id","ObjectId(609ecae1b485875e70a3e076)");
 
                 mongoCollection.findOne(queryFilter).getAsync(lol -> {
@@ -123,6 +123,30 @@ public class MainActivity6 extends AppCompatActivity {
                     }
                 });*/
 
+
+                String[] a_final_results = new String[100];
+                //Document queryfilter = new Document("account","account1");
+
+                RealmResultTask<MongoCursor<Document>> findTask = mongoCollection.find().iterator();
+                findTask.getAsync(a -> {
+                    if (a.isSuccess()){
+                        MongoCursor<Document> a_result = a.get();
+                        int index = 0;
+                        while (a_result.hasNext()){
+                            Document document = a_result.next();
+                            a_final_results[index] = document.getString("object");
+                            index++;
+                            //System.out.println(a_final_results[0]);   testlog
+                            //System.out.println(id +"");               testlog
+                        }
+
+                        for (int i = 0; i < a_final_results.length ; i++){
+                            System.out.println(a_final_results[i]);
+                        }
+                    } else {
+                        Log.v("find task error", a.getError().toString());
+                    }
+                });
             }
         });
     }

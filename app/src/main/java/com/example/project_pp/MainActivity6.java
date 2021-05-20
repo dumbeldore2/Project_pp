@@ -139,7 +139,7 @@ public class MainActivity6 extends AppCompatActivity {
                             //System.out.println(a_final_results[0]);   testlog
                             //System.out.println(id +"");               testlog
                         }
-
+                        fun_a(a_final_results);
                         for (int i = 0; i < a_final_results.length ; i++){
                             System.out.println(a_final_results[i]);
                         }
@@ -149,6 +149,19 @@ public class MainActivity6 extends AppCompatActivity {
                 });
             }
         });
+    }
+
+    public int fun_a(String[] strings){
+        int uit = 0;
+        boolean a = true;
+        for (int i = 0 ; i < strings.length && a; i++){
+            if (strings[i] == null){
+                uit = i;
+                a = false;
+            }
+        }
+        System.out.println(uit);
+        return uit;
     }
 
     public void click1(){

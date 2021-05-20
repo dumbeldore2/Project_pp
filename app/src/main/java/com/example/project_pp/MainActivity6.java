@@ -17,6 +17,8 @@ import android.widget.Toast;
 
 import org.bson.Document;
 
+import java.util.ArrayList;
+
 import io.realm.Realm;
 import io.realm.mongodb.App;
 import io.realm.mongodb.AppConfiguration;
@@ -124,25 +126,24 @@ public class MainActivity6 extends AppCompatActivity {
                 });*/
 
 
-                String[] a_final_results = new String[100];
+                ArrayList<String> a_final_results = new ArrayList<>();
                 //Document queryfilter = new Document("account","account1");
 
                 RealmResultTask<MongoCursor<Document>> findTask = mongoCollection.find().iterator();
                 findTask.getAsync(a -> {
                     if (a.isSuccess()){
                         MongoCursor<Document> a_result = a.get();
-                        int index = 0;
                         while (a_result.hasNext()){
                             Document document = a_result.next();
-                            a_final_results[index] = document.getString("object");
-                            index++;
-                            //System.out.println(a_final_results[0]);   testlog
+                            a_final_results.add(document.getString("object"));
+                            //System.out.println(a_final_results.get(0).toString());
                             //System.out.println(id +"");               testlog
                         }
-                        fun_a(a_final_results);
-                        for (int i = 0; i < a_final_results.length ; i++){
+                        fun_b(a_final_results);
+
+                        /*for (int i = 0; i < a_final_results.length ; i++){
                             System.out.println(a_final_results[i]);
-                        }
+                        }*/
                     } else {
                         Log.v("find task error", a.getError().toString());
                     }
@@ -150,18 +151,34 @@ public class MainActivity6 extends AppCompatActivity {
             }
         });
     }
-
-    public int fun_a(String[] strings){
-        int uit = 0;
-        boolean a = true;
-        for (int i = 0 ; i < strings.length && a; i++){
-            if (strings[i] == null){
-                uit = i;
-                a = false;
+    /*public String [] fun_b(String[] strings){
+        String [] strings1 = new String[fun_a(strings)];
+        for (int i = 0; i < fun_a(strings);i++){
+            //System.out.println(strings[i] + i);
+            for (int j = 0; j < fun_a(strings); j++){
+                if (strings[i].equals(strings[j+1]) && i != j){
+                    System.out.println("item " + strings[i] + " = " + strings[j+1]);
+                }
             }
         }
-        System.out.println(uit);
-        return uit;
+        return strings;
+    }*/
+
+    public ArrayList<String> fun_b(ArrayList strings){
+        ArrayList strings1 = new ArrayList();
+        for(int i = 0; i < strings.size(); i++){
+            if (!strings1.contains(strings.get(i).toString())){
+                strings1.add(strings.get(i).toString());
+                //System.out.println(strings.get(i).toString());
+            }
+        }
+
+        /*for (int i = 0 ; i < strings1.size() ; i++){
+            System.out.println(strings1.get(i).toString());
+
+        }*/
+        System.out.println(strings1.size());
+        return strings1;
     }
 
     public void click1(){

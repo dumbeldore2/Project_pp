@@ -195,6 +195,7 @@ public class MainActivity2 extends AppCompatActivity {
     public void comboMaker(){
         ArrayList<String> uit = database.namen();
         int[] uit2 = new int[uit.size()];
+        namen = new String[uit.size()];
 
         for (int i = 0; i < uit.size() ; i++){
             uit2[i] = R.drawable.rec_1;

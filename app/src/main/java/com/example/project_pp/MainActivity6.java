@@ -146,6 +146,8 @@ public class MainActivity6 extends AppCompatActivity {
                             //System.out.println(id +"");               testlog
                         }
                         fun_b(a_final_results);
+                        fun_c(a_final_results);
+
 
                         /*for (int i = 0; i < a_final_results.length ; i++){
                             System.out.println(a_final_results[i]);
@@ -183,8 +185,16 @@ public class MainActivity6 extends AppCompatActivity {
             System.out.println(strings1.get(i).toString());
 
         }*/
-        System.out.println(strings1.size());
+        //System.out.println(strings1.size());
         return strings1;
+    }
+
+    public void fun_c(ArrayList arrayList){
+        for (int i = 0 ; i < fun_b(arrayList).size() ; i++){
+            if (!database.namen().contains(fun_b(arrayList).get(i))){
+                database.addToTabel1(fun_b(arrayList).get(i));
+            }
+        }
     }
 
     public void click1(){

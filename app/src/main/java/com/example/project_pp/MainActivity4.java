@@ -81,8 +81,8 @@ public class MainActivity4 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (!getEditText1().isEmpty()){
-                    if (database.uniqueWebsite(getEditText1())){
-                        database.addToTabel1(getEditText1());
+                    if (database.uniqueWebsite3(getEditText1())){
+                        database.addToTabel3(getEditText1());
                         Intent intent = new Intent(getApplicationContext(),MainActivity2.class);
                         startActivity(intent);
                     } else {

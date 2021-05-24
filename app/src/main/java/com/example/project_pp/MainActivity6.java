@@ -47,6 +47,8 @@ public class MainActivity6 extends AppCompatActivity {
     User user;
     MongoCollection<Document> mongoCollection;
 
+    Database database;
+
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +69,10 @@ public class MainActivity6 extends AppCompatActivity {
 
         //ints lengte
         ints = new int[2];
+
+        //database
+        database = new Database(this);
+        System.out.println(database.namen().size() + "??????????????????????");
 
         //fun
         click1();

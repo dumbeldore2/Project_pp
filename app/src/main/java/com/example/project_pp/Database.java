@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+
 import javax.xml.transform.sax.TemplatesHandler;
 
 public class Database extends SQLiteOpenHelper {
@@ -80,24 +82,21 @@ public class Database extends SQLiteOpenHelper {
         sqLiteDatabase.insert(DATABASE_table_1, null, contentValues);
     }
 
-    public String[] namen() {
+    public ArrayList<String> namen() {
 
-        String uit[];
+        ArrayList<String> uits = new ArrayList<>();
 
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         Cursor cursor = sqLiteDatabase.rawQuery("select " + Table_1_col_2 + " from " + DATABASE_table_1 + "", null);
-
-        uit = new String[cursor.getCount()];
 
         for (int i = 0; i <= cursor.getCount(); i++) {
             if (cursor.moveToPosition(i)) {
                 StringBuffer stringBuffer = new StringBuffer();
                 stringBuffer.append(cursor.getString(0));
-                uit[i] = stringBuffer.toString();
+                uits.add(stringBuffer.toString());
             }
         }
-
-        return uit;
+        return uits;
     }
 
     public int[] idsTableOne() {
@@ -152,11 +151,11 @@ public class Database extends SQLiteOpenHelper {
 
     public boolean uniqueWebsite(String website){
         boolean uit = true;
-        String[] webs = namen().clone();
-        for (int i = 0; i < webs.length && uit ; i++){
-            if (website.equals(webs[i])){
-                System.out.println(website);
-                System.out.println(webs[i]);
+        ArrayList<String> webs = namen();
+        for (int i = 0; i < webs.size() && uit ; i++){
+            if (website.equals(webs.get(i))){
+                //System.out.println(website);
+                //System.out.println(webs[i]);
                 uit = false;
             }
         }

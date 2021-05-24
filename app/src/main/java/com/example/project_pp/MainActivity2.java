@@ -22,6 +22,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class MainActivity2 extends AppCompatActivity {
 
     //tittel opvragen om kleur te geven
@@ -35,6 +37,7 @@ public class MainActivity2 extends AppCompatActivity {
 
     //dit zijn de namen voor de listview
     String namen[] = {};
+    //ArrayList<String> namen = new ArrayList<>();
     int images[] = {};
     int ids[] = {};
 
@@ -190,14 +193,14 @@ public class MainActivity2 extends AppCompatActivity {
 
     //fun make combo voor listview
     public void comboMaker(){
-        String[] uit = database.namen().clone();
-        int[] uit2 = new int[uit.length];
+        ArrayList<String> uit = database.namen();
+        int[] uit2 = new int[uit.size()];
 
-        for (int i = 0; i < uit.length ; i++){
+        for (int i = 0; i < uit.size() ; i++){
             uit2[i] = R.drawable.rec_1;
+            namen[i] = uit.get(i);
         }
 
-        namen = uit;
         images = uit2;
         ids = database.idsTableOne().clone();
 

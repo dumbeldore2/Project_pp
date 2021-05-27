@@ -165,13 +165,12 @@ public class Database extends SQLiteOpenHelper {
     }
 
     public boolean uniqueWebsite(String website){
-        boolean uit = true;
+        boolean uit = false;
         ArrayList<String> webs = namen();
-        for (int i = 0; i < webs.size() && uit ; i++){
-            if (website.equals(webs.get(i))){
-                //System.out.println(website);
-                //System.out.println(webs[i]);
-                uit = false;
+        ArrayList<String> webs2 = namen3();
+        if (webs.contains(website)){
+            if (webs2.contains(website)){
+                uit = true;
             }
         }
         System.out.println(uit);
@@ -431,17 +430,4 @@ public class Database extends SQLiteOpenHelper {
         contentValues.put(Table_1_col_2,naam);
         sqLiteDatabase.update(DATABASE_table_1,contentValues,Table_1_col_1 + " == ?", new String[] {id +""});
     }*/
-
-    public boolean uniqueWebsite3(String website){
-        boolean uit = false;
-        ArrayList<String> webs = namen3();
-        if (!webs.contains(website.toString().toLowerCase())){
-            uit = true;
-        }
-        System.out.println(uit);
-        return uit;
-    }
-
-
-
 }

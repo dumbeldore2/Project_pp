@@ -37,6 +37,7 @@ public class MainActivity2 extends AppCompatActivity {
 
     //dit zijn de namen voor de listview
     String namen[] = {};
+    String namenNew[] = {};
     //ArrayList<String> namen = new ArrayList<>();
     int images[] = {};
     int ids[] = {};
@@ -194,13 +195,19 @@ public class MainActivity2 extends AppCompatActivity {
     //fun make combo voor listview
     public void comboMaker(){
         ArrayList<String> uit = database.namen();
+        for (int i = 0 ; i < database.namen3().size() ; i++){
+            uit.add(database.namen3().get(i));
+        }
+
         int[] uit2 = new int[uit.size()];
+
         namen = new String[uit.size()];
 
         for (int i = 0; i < uit.size() ; i++){
             uit2[i] = R.drawable.rec_1;
             namen[i] = uit.get(i);
         }
+
 
         images = uit2;
         ids = database.idsTableOne().clone();

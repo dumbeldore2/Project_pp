@@ -165,13 +165,14 @@ public class Database extends SQLiteOpenHelper {
     }
 
     public boolean uniqueWebsite(String website){
-        boolean uit = false;
+        boolean uit = true;
         ArrayList<String> webs = namen();
         ArrayList<String> webs2 = namen3();
         if (webs.contains(website)){
-            if (webs2.contains(website)){
-                uit = true;
-            }
+            uit = false;
+        }
+        if (webs2.contains(website)){
+            uit = false;
         }
         System.out.println(uit);
         return uit;

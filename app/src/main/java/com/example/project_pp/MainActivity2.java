@@ -207,8 +207,7 @@ public class MainActivity2 extends AppCompatActivity {
             uit2[i] = R.drawable.rec_1;
             namen[i] = uit.get(i);
         }
-
-
+        
         images = uit2;
         ids = database.idsTableOne().clone();
 
